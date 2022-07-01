@@ -170,10 +170,7 @@ func (c *CacheClient) IsCached(route string) bool {
 	return true
 }
 
-func (c *CacheClient) RouteMiddleware(w http.ResponseWriter, r *http.Request, expireAfter uint64, expireCount uint64, deleteOnExpire bool, function_to_execute func() (interface{}, error), function_to_write func(interface{}) error,
-
-// headers map[string][]string
-) (err error) {
+func (c *CacheClient) RouteMiddleware(w http.ResponseWriter, r *http.Request, expireAfter uint64, expireCount uint64, deleteOnExpire bool, function_to_execute func() (interface{}, error), function_to_write func(interface{}) error, headers map[string][]string) (err error) {
 
 	var data_to_send interface{}
 
@@ -204,11 +201,11 @@ CACHEDATA:
 	}
 
 	/* set headers */
-	// for key, vals := range headers {
-	// 	for _, val := range vals {
-	// 		w.Header().Add(key, val)
-	// 	}
-	// }
+	for key, vals := range headers {
+		for _, val := range vals {
+			w.Header().Add(key, val)
+		}
+	}
 
 	err = function_to_write(data_to_send)
 	if err != nil {
