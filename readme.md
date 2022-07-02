@@ -14,3 +14,6 @@ HTTP Middleware
 Support cache repopulation
 </li>
 </ul>  
+
+### Usage 
+`go get github.com/c3rl/cache`
