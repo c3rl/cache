@@ -1,5 +1,5 @@
 # Cache
-## Simple caching utility based on maps
+### Simple caching utility based on maps
 <ul>
 <li>
 Time based caching
